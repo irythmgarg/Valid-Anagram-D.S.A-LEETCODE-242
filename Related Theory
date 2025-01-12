@@ -1,0 +1,37 @@
+Theory Explanation:
+Length Check:
+
+The first condition checks if the lengths of the two strings are the same. If they are not, the strings cannot be anagrams, and the function returns false.
+Counting Frequency in First String (s):
+
+We use an unordered map (freqMap) to count the frequency of each character in string s. Each character in s is mapped to its count in the frequency map.
+Decreasing Frequency for Second String (t):
+
+We then iterate over the second string t and decrease the frequency of each character in the map.
+If a character in t does not exist in the map (i.e., it was not found in s), we return false immediately, as it cannot be an anagram.
+If the frequency of a character reaches 0 after decrementing, we remove it from the map to avoid unnecessary entries.
+Final Check:
+
+If the frequency map is empty after processing all characters from both strings, it means the strings are anagrams. If not, they are not anagrams.
+Space Complexity:
+Auxiliary Space:
+
+The function uses an unordered map to store the frequencies of characters in the string. In the worst case, where all characters are unique, the map will contain n entries, where n is the length of the strings.
+Therefore, the space complexity is O(n), where n is the length of the strings.
+Final Space Complexity: O(n), where n is the length of the strings.
+
+Time Complexity:
+First Loop (Counting Frequency):
+
+We iterate through the first string s once, which takes O(n) time, where n is the length of the string.
+Second Loop (Decreasing Frequency):
+
+We iterate through the second string t once, which also takes O(n) time.
+Map Operations:
+
+In both loops, the operations on the unordered map (insertion, lookup, and deletion) are all O(1) on average.
+Final Time Complexity: O(n), where n is the length of the strings.
+Overall Complexity:
+Time Complexity: O(n), where n is the length of the strings.
+Space Complexity: O(n), where n is the length of the strings.
+This solution efficiently checks whether two strings are anagrams by using an unordered map to count and compare the frequencies of characters.
