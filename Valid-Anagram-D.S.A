@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        // If the lengths are different, they can't be anagrams
+        if (s.size() != t.size()) {
+            return false;
+        }
+        
+        unordered_map<char, int> freqMap;
+        
+        // Count the frequency of characters in the first string
+        for (char c : s) {
+            freqMap[c]++;
+        }
+        
+        // Decrease the frequency for characters in the second string
+        for (char c : t) {
+            if (freqMap.find(c) == freqMap.end()) {
+                return false; // Character not found in map, not an anagram
+            }
+            freqMap[c]--;
+            if (freqMap[c] == 0) {
+                freqMap.erase(c); // Remove from map once frequency reaches 0
+            }
+        }
+        
+        // If the map is empty, the strings are anagrams
+        return freqMap.empty();
+    }
+};
